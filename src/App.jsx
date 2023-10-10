@@ -17,7 +17,7 @@ function App() {
       <div className="px-5">
         <Nav />
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/cek-resi-all" element={<Home />} />
           <Route path="jne" element={<Jne />} />
           <Route path="jnt" element={<Jnt />} />
           <Route path="pos" element={<Pos />} />
