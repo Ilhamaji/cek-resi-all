@@ -19,7 +19,7 @@ function App() {
         <Nav />
         <Routes>
           <Route path="*" element={<Notfound />} />
-          <Route path="cek-resi-all" element={<Notfound />} />
+          <Route path="cek-resi-all" element={<Home />} />
           <Route path="/" element={<Home />} />
           <Route path="about" element={<About />} />
           <Route path="jne" element={<Jne />} />
