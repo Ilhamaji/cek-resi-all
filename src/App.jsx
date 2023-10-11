@@ -11,7 +11,6 @@ import Ninja from "./pages/Ninja";
 import Tiki from "./pages/Tiki";
 import Spx from "./pages/Spx";
 import About from "./pages/About";
-import Notfound from "./pages/Notfound";
 
 function App() {
   return (
@@ -20,6 +19,7 @@ function App() {
         <Nav />
         <Routes>
           <Route path="*" element={<Notfound />} />
+          <Route path="cek-resi-all" element={<Notfound />} />
           <Route path="/" element={<Home />} />
           <Route path="about" element={<About />} />
           <Route path="jne" element={<Jne />} />
