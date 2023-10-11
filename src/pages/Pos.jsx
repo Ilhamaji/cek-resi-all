@@ -1,11 +1,13 @@
-import React from "react";
-import { useState } from "react";
+import axios from "axios";
+import React, { useState } from "react";
 
 export default function Pos() {
   const [resi, setResi] = useState("");
   const [hasil, setHasil] = useState([{}]);
   const [loading, setLoading] = useState(false);
-
+  const [list, setList] = useState(false);
+  const [jmlData, setJmlData] = useState(0);
+  const [err, setErr] = useState(false);
   const key =
     "6fdb77034d89a14bdbf4c395d145ed49858dfb180a432336be30fda9fa29aeb6";
 
@@ -16,16 +18,20 @@ export default function Pos() {
       .get(
         "https://api.binderbyte.com/v1/track?api_key=" +
           key +
-          `&courier=jnt&awb=` +
+          `&courier=pos&awb=` +
           resi
       )
       .then((response) => {
         setHasil(response.data.data.history);
         setLoading(false);
+        setErr(false);
+        setList(true);
+        setJmlData(hasil.length);
       })
       .catch((e) => {
         console.log("Error : " + e);
         setLoading(false);
+        setErr(true);
       });
   };
 
@@ -49,17 +55,34 @@ export default function Pos() {
         Track
       </button>
 
-      {hasil
+      {err ? (
+        <div className="text-red-500">Nomor resi tidak ditemukan</div>
+      ) : (
+        ""
+      )}
+
+      {list
         ? hasil.map((h, i) => {
             return (
-              <div className="my-2" key={i}>
-                {h.date} {h.desc}
-              </div>
+              <center key={i}>
+                {jmlData > i ? "Success" : "|"}
+                <div className="my-2 bg-zinc-100 py-3 rounded-md md:w-4/5 lg:w-3/5">
+                  <b>{h.date}</b>
+                  <br />
+                  <hr />
+                  {h.desc}
+                </div>
+              </center>
             );
           })
         : ""}
-
-      {loading ? <div className="animate-spin text-4xl">⊕</div> : ""}
+      {loading ? (
+        <div className="block">
+          Loading...<div className="animate-spin text-4xl">⊕</div>
+        </div>
+      ) : (
+        ""
+      )}
     </div>
   );
 }

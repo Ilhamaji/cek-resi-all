@@ -10,14 +10,16 @@ import Anteraja from "./pages/Anteraja";
 import Ninja from "./pages/Ninja";
 import Tiki from "./pages/Tiki";
 import Spx from "./pages/Spx";
+import About from "./pages/About";
 
 function App() {
   return (
     <>
-      <div className="px-5">
+      <div className="px-5 lg:px-60">
         <Nav />
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="about" element={<About />} />
           <Route path="jne" element={<Jne />} />
           <Route path="jnt" element={<Jnt />} />
           <Route path="pos" element={<Pos />} />
