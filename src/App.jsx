@@ -4,13 +4,14 @@ import Home from "./pages/Home";
 import Jne from "./pages/Jne";
 import Jnt from "./pages/Jnt";
 import Pos from "./pages/Pos";
-import { Routes, Route } from "react-router-dom";
 import Sicepat from "./pages/Sicepat";
 import Anteraja from "./pages/Anteraja";
 import Ninja from "./pages/Ninja";
 import Tiki from "./pages/Tiki";
 import Spx from "./pages/Spx";
 import About from "./pages/About";
+import { Routes, Route } from "react-router-dom";
+import Notfound from "./pages/Notfound";
 
 function App() {
   return (
