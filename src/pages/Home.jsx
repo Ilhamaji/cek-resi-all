@@ -57,6 +57,8 @@ export default function Home() {
   const [checkingCourier, setCheckingCourier] = useState(null);
   const [trackingData, setTrackingData] = useState(null);
   const [errorMsg, setErrorMsg] = useState(null);
+  const [jnePhoneReq, setJnePhoneReq] = useState(false);
+  const [jnePhone, setJnePhone] = useState("");
 
   const handleTrack = async (e) => {
     e.preventDefault();
@@ -69,6 +71,8 @@ export default function Home() {
     setErrorMsg(null);
     setTrackingData(null);
     setCheckingCourier(null);
+    setJnePhoneReq(false);
+    setJnePhone("");
 
     let found = false;
 
@@ -97,6 +101,11 @@ export default function Home() {
         const hasValidHistory = Array.isArray(history) && history.length > 0 && history[0] && typeof history[0] === 'object' && !Array.isArray(history[0]) && (history[0].desc || history[0].date);
 
         if (response.data?.status === 200 && hasValidHistory) {
+          if (courier.id === 'jne' && history[0].desc && history[0].desc.includes("UNTUK MENDAPATKAN HISTORY LENGKAP")) {
+            setJnePhoneReq(true);
+          } else {
+            setJnePhoneReq(false);
+          }
           // Success!
           setTrackingData(responseData);
           found = true;
@@ -109,6 +118,47 @@ export default function Home() {
 
     if (!found) {
       setErrorMsg("Nomor resi tidak ditemukan di semua ekspedisi. Pastikan nomor resi benar.");
+    }
+
+    setLoading(false);
+    setCheckingCourier(null);
+  };
+
+  const handleTrackJneWithPhone = async (e) => {
+    e.preventDefault();
+    if (!jnePhone.trim() || jnePhone.length !== 5) {
+      setErrorMsg("Mohon masukkan 5 digit terakhir nomor HP dengan benar.");
+      return;
+    }
+
+    setLoading(true);
+    setErrorMsg(null);
+    setCheckingCourier("JNE Detail");
+
+    try {
+      const response = await axios.get(
+        `https://api.binderbyte.com/v1/track?api_key=${
+          import.meta.env.VITE_API_KEY
+        }&courier=jne&awb=${resi}&number=${jnePhone}`
+      );
+
+      const responseData = response.data?.data;
+      const history = responseData?.history;
+      
+      const hasValidHistory = Array.isArray(history) && history.length > 0 && history[0] && typeof history[0] === 'object' && !Array.isArray(history[0]) && (history[0].desc || history[0].date);
+
+      if (response.data?.status === 200 && hasValidHistory) {
+        if (history[0].desc && history[0].desc.includes("UNTUK MENDAPATKAN HISTORY LENGKAP")) {
+          setErrorMsg("Gagal mendapatkan history. 5 digit terakhir nomor HP mungkin salah.");
+        } else {
+          setJnePhoneReq(false);
+          setTrackingData(responseData);
+        }
+      } else {
+        setErrorMsg("Gagal mendapatkan history lengkap.");
+      }
+    } catch (e) {
+      setErrorMsg("Terjadi kesalahan sistem saat mencoba fetch data JNE.");
     }
 
     setLoading(false);
@@ -226,44 +276,88 @@ export default function Home() {
                    <p className="text-slate-500 font-medium text-sm">{trackingData.summary?.date}</p>
                 </div>
              </div>
-          </div>
+           </div>
 
-          {/* Timeline History */}
-          <h3 className="text-xl font-bold text-slate-800 mb-6 flex items-center gap-2 px-2">
-            <svg className="w-6 h-6 text-indigo-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
-            Riwayat Perjalanan
-          </h3>
-          
-          <div className="glass-card p-6 md:p-8 relative">
-             <div className="absolute left-10 md:left-12 top-10 bottom-10 w-0.5 bg-slate-200"></div>
-             
-             <div className="flex flex-col gap-6">
-                {(trackingData.history || []).map((history, index) => {
-                  const isLatest = index === 0;
-                  return (
-                    <div key={index} className="flex gap-4 relative z-10">
-                      <div className="flex flex-col items-center mt-1 w-10 shrink-0">
-                         <div className={`w-4 h-4 rounded-full border-2 shadow-sm flex items-center justify-center ring-4 ring-white
-                            ${isLatest 
-                              ? trackingData.summary?.status === 'DELIVERED' 
-                                 ? 'bg-emerald-500 border-emerald-600'
-                                 : 'bg-indigo-500 border-indigo-600 ring-indigo-50'
-                              : 'bg-white border-slate-300'}`}
-                         ></div>
-                      </div>
-                      <div className={`pb-6 border-b border-slate-100 w-full last:border-b-0 last:pb-0 ${isLatest ? 'opacity-100' : 'opacity-70'}`}>
-                         <p className="text-sm font-semibold text-slate-800 mb-1">{history.desc}</p>
-                         <p className="text-xs font-medium text-slate-400">{history.date}</p>
-                      </div>
-                    </div>
-                  );
-                })}
-             </div>
-          </div>
+           {/* JNE Phone Requirement Form */}
+           {jnePhoneReq && (
+            <div className="glass-card p-6 md:p-8 mb-8 relative border-l-4 border-l-indigo-500 bg-indigo-50/40">
+               <div className="flex items-start gap-4 flex-col md:flex-row">
+                 <div className="bg-indigo-100 p-3 rounded-full shrink-0 text-indigo-600">
+                    <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                    </svg>
+                 </div>
+                 <div className="flex-grow w-full">
+                   <h3 className="text-lg font-bold text-slate-800 mb-1">Dibutuhkan Nomor Handphone (JNE)</h3>
+                   <p className="text-sm text-slate-600 mb-4 leading-relaxed">Pihak ekspedisi menyembunyikan riwayat lengkap untuk keamanan. Masukkan <strong>5 digit terakhir</strong> nomor HP penerima.</p>
+                   
+                   <form onSubmit={handleTrackJneWithPhone} className="flex flex-col sm:flex-row gap-3">
+                     <div className="relative flex-grow">
+                        <span className="absolute inset-y-0 left-0 flex items-center pl-4 text-slate-400 font-bold">***-****-</span>
+                        <input
+                          type="text"
+                          maxLength={5}
+                          placeholder="12345"
+                          className="w-full h-12 pl-24 pr-4 rounded-xl border border-slate-200 bg-white/70 focus:bg-white focus:outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-100 transition-all font-bold text-slate-700 tracking-widest placeholder:font-normal placeholder:tracking-normal"
+                          value={jnePhone}
+                          onChange={(e) => setJnePhone(e.target.value.replace(/\D/g, ''))}
+                          disabled={loading}
+                        />
+                     </div>
+                     <button
+                       type="submit"
+                       disabled={loading}
+                       className={`h-12 px-6 rounded-xl font-bold text-white transition-all sm:w-auto w-full whitespace-nowrap shadow-sm
+                          ${loading ? 'bg-indigo-300 cursor-not-allowed' : 'bg-indigo-600 hover:bg-indigo-700 hover:shadow-indigo-200 active:scale-95'}`}
+                     >
+                       Tampilkan Detail
+                     </button>
+                   </form>
+                 </div>
+               </div>
+            </div>
+           )}
 
-        </div>
+           {/* Timeline History */}
+           {!jnePhoneReq && (
+             <>
+               <h3 className="text-xl font-bold text-slate-800 mb-6 flex items-center gap-2 px-2">
+                 <svg className="w-6 h-6 text-indigo-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                 </svg>
+                 Riwayat Perjalanan
+               </h3>
+               
+               <div className="glass-card p-6 md:p-8 relative">
+                  <div className="absolute left-10 md:left-12 top-10 bottom-10 w-0.5 bg-slate-200"></div>
+                  
+                  <div className="flex flex-col gap-6">
+                     {(trackingData.history || []).map((history, index) => {
+                       const isLatest = index === 0;
+                       return (
+                         <div key={index} className="flex gap-4 relative z-10">
+                           <div className="flex flex-col items-center mt-1 w-10 shrink-0">
+                              <div className={`w-4 h-4 rounded-full border-2 shadow-sm flex items-center justify-center ring-4 ring-white
+                                 ${isLatest 
+                                   ? trackingData.summary?.status === 'DELIVERED' 
+                                      ? 'bg-emerald-500 border-emerald-600'
+                                      : 'bg-indigo-500 border-indigo-600 ring-indigo-50'
+                                   : 'bg-white border-slate-300'}`}
+                              ></div>
+                           </div>
+                           <div className={`pb-6 border-b border-slate-100 w-full last:border-b-0 last:pb-0 ${isLatest ? 'opacity-100' : 'opacity-70'}`}>
+                              <p className="text-sm font-semibold text-slate-800 mb-1">{history.desc}</p>
+                              <p className="text-xs font-medium text-slate-400">{history.date}</p>
+                           </div>
+                         </div>
+                       );
+                     })}
+                  </div>
+               </div>
+             </>
+           )}
+
+         </div>
       )}
     </div>
   );
