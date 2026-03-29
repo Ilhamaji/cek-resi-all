@@ -3,10 +3,14 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main # Memicu action saat ada push ke branch main
+      - main
 
 permissions:
   contents: write
+
+env:
+  # Memaksa GitHub Actions menggunakan Node.js 24 sesuai saran peringatan
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
 jobs:
   build-and-deploy:
@@ -14,12 +18,13 @@ jobs:
 
     steps:
       - name: Checkout 🛎️
-        uses: actions/checkout@v4
+        # Gunakan versi terbaru (cek jika v5 sudah stabil di tahun 2026)
+        uses: actions/checkout@v5
 
       - name: Setup Node.js ⚙️
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
-          node-version: 24
+          node-version: 24 # Langsung gunakan Node 24 untuk build project kamu
           cache: "npm"
 
       - name: Install and Build 🔧
@@ -28,7 +33,7 @@ jobs:
           npm run build
 
       - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@v4
+        uses: JamesIves/github-pages-deploy-action@v4 # Action ini biasanya forward-compatible
         with:
-          folder: dist # Folder hasil build (sesuaikan jika folder build kamu namanya 'build' atau 'out')
-          branch: gh-pages # Target branch
+          folder: dist
+          branch: gh-pages
