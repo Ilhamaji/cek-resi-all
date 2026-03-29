@@ -199,22 +199,22 @@ export default function Home() {
              </div>
              
              <div className="flex flex-col md:flex-row justify-between gap-6">
-                <div>
-                   <h2 className="text-xl font-bold text-slate-800 mb-1">{trackingData.summary?.awb}</h2>
+                <div className="min-w-0 flex-1">
+                   <h2 className="text-xl font-bold text-slate-800 mb-1 truncate">{trackingData.summary?.awb}</h2>
                    <p className="text-slate-500 text-sm font-medium mb-4">Dikirim via {trackingData.summary?.courier}</p>
                    
-                   <div className="flex flex-col gap-2 mt-4 text-sm">
-                     <div className="flex items-start gap-2">
-                       <span className="text-slate-400 font-medium min-w-[70px]">Pengirim:</span>
-                       <span className="text-slate-700 font-semibold">{trackingData.detail?.shipper || trackingData.detail?.origin || "-"}</span>
+                   <div className="flex flex-col gap-2 mt-4 text-sm w-full">
+                     <div className="flex items-start gap-2 w-full">
+                       <span className="text-slate-400 font-medium min-w-[70px] shrink-0">Pengirim:</span>
+                       <span className="text-slate-700 font-semibold break-all min-w-0 flex-1">{trackingData.detail?.shipper || trackingData.detail?.origin || "-"}</span>
                      </div>
-                     <div className="flex items-start gap-2">
-                       <span className="text-slate-400 font-medium min-w-[70px]">Penerima:</span>
-                       <span className="text-slate-700 font-semibold">{trackingData.detail?.receiver || "-"} <br/> {trackingData.detail?.destination || ""}</span>
+                     <div className="flex items-start gap-2 w-full">
+                       <span className="text-slate-400 font-medium min-w-[70px] shrink-0">Penerima:</span>
+                       <span className="text-slate-700 font-semibold break-all min-w-0 flex-1">{trackingData.detail?.receiver || "-"} <br/> {trackingData.detail?.destination || ""}</span>
                      </div>
                    </div>
                 </div>
-                <div className="flex flex-col items-start md:items-end md:justify-center border-t md:border-t-0 md:border-l border-slate-200 pt-4 md:pt-0 md:pl-6 text-left md:text-right">
+                <div className="flex flex-col items-start md:items-end md:justify-center border-t md:border-t-0 md:border-l border-slate-200 pt-4 md:pt-0 md:pl-6 text-left md:text-right shrink-0">
                    <div className="text-slate-400 font-medium text-xs uppercase tracking-wider mb-1">Status Terkini</div>
                    <div className={`px-4 py-2 rounded-lg font-bold text-sm mb-2 shadow-sm
                       ${trackingData.summary?.status === 'DELIVERED' 
