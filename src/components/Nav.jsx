@@ -5,11 +5,7 @@ export default function Nav() {
   const location = useLocation();
   const isActive = (path) => {
     // Exact match for root, or active for about
-    if (
-      path === "/" &&
-      (location.pathname === "/" || location.pathname === "/cek-resi-all")
-    )
-      return true;
+    if (path === "/" && location.pathname === "/") return true;
     if (path === "/about" && location.pathname === "/about") return true;
     return false;
   };

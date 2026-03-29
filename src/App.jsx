@@ -17,7 +17,6 @@ function App() {
         <main className="flex-grow flex flex-col pt-8 pb-16">
           <Routes>
             <Route path="*" element={<Notfound />} />
-            <Route path="cek-resi-all" element={<Home />} />
             <Route path="/" element={<Home />} />
             <Route path="about" element={<About />} />
           </Routes>
