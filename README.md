@@ -15,7 +15,7 @@ A lightweight and efficient multi-courier package tracking library/application b
 
 ## 🛠️ Built With
 
-  * **Backend/Engine**: [Node.js / PHP / Python - *Adjust based on your actual tech stack*]
+  * **Backend/Engine**: [Node.js]
   * **Data Source**: Scraping or Unofficial API integration.
 
 ## 📦 Installation
