@@ -1,4 +1,4 @@
-# Cek Resi All
+# <img src="public/logo.svg" alt="Logo" width="36" height="36" align="top" /> Cek Resi All
 
 A lightweight and efficient multi-courier package tracking library/application built to simplify shipment monitoring for various Indonesian logistics providers.
 Demo : [CekResiAll](https://cekresiall.netlify.app)
