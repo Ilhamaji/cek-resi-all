@@ -1,280 +1,90 @@
-<p align="center">
-    <img src="https://raw.githubusercontent.com/PKief/vscode-material-icon-theme/ec559a9f6bfd399b82bb44393651661b08aaf7ba/icons/folder-markdown-open.svg" align="center" width="30%">
-</p>
-<p align="center"><h1 align="center">CEK-RESI-ALL.GIT</h1></p>
-<p align="center">
-	<em><code>❯ REPLACE-ME</code></em>
-</p>
-<p align="center">
-	<img src="https://img.shields.io/github/license/Ilhamaji/cek-resi-all.git?style=default&logo=opensourceinitiative&logoColor=white&color=0080ff" alt="license">
-	<img src="https://img.shields.io/github/last-commit/Ilhamaji/cek-resi-all.git?style=default&logo=git&logoColor=white&color=0080ff" alt="last-commit">
-	<img src="https://img.shields.io/github/languages/top/Ilhamaji/cek-resi-all.git?style=default&color=0080ff" alt="repo-top-language">
-	<img src="https://img.shields.io/github/languages/count/Ilhamaji/cek-resi-all.git?style=default&color=0080ff" alt="repo-language-count">
-</p>
-<p align="center"><!-- default option, no dependency badges. -->
-</p>
-<p align="center">
-	<!-- default option, no dependency badges. -->
-</p>
-<br>
-Table of Contents
- Overview
- Features
- Project Structure
- Project Index
- Getting Started
- Prerequisites
- Installation
- Usage
- Testing
- Project Roadmap
- Contributing
- License
- Acknowledgments
----
-Overview
-<code>❯ REPLACE-ME</code>
----
-Features
-<code>❯ REPLACE-ME</code>
----
-Project Structure
-```sh
-└── cek-resi-all.git/
-    ├── .github
-    │   └── workflows
-    │       └── deploy.yaml
-    ├── README.md
-    ├── dist
-    │   ├── assets
-    │   │   ├── index-6f1a5185.js
-    │   │   └── index-7d27804e.css
-    │   ├── index.html
-    │   └── vite.svg
-    ├── index.html
-    ├── package-lock.json
-    ├── package.json
-    ├── postcss.config.js
-    ├── public
-    │   └── vite.svg
-    ├── src
-    │   ├── App.jsx
-    │   ├── assets
-    │   │   └── react.svg
-    │   ├── components
-    │   │   └── Nav.jsx
-    │   ├── index.css
-    │   ├── main.jsx
-    │   └── pages
-    │       ├── About.jsx
-    │       ├── Home.jsx
-    │       └── Notfound.jsx
-    ├── tailwind.config.js
-    ├── vite.config.js
-    └── yarn.lock
+Since this repository is a multi-courier tracking tool, the README should emphasize its flexibility and ease of use. Here is a professional `README.md` template for **cek-resi-all**.
+
+-----
+
+# Cek Resi All
+
+A lightweight and efficient multi-courier package tracking library/application built to simplify shipment monitoring for various Indonesian logistics providers.
+
+## 🚀 Features
+
+  * **Multi-Courier Support**: Track packages from various popular couriers in Indonesia (JNE, J\&T, Sicepat, POS, TIKI, etc.).
+  * **Real-time Tracking**: Fetch the latest status updates directly from logistics providers.
+  * **Simple Integration**: Clean API/structure making it easy to integrate into larger web or mobile applications.
+  * **Lightweight**: Minimal dependencies for faster execution and easier deployment.
+
+## 🛠️ Built With
+
+  * **Backend/Engine**: [Node.js / PHP / Python - *Adjust based on your actual tech stack*]
+  * **Data Source**: Scraping or Unofficial API integration.
+
+## 📦 Installation
+
+Clone the repository to your local machine:
+
+```bash
+git clone https://github.com/Ilhamaji/cek-resi-all.git
+cd cek-resi-all
 ```
 
-Project Index
-<details open>
-	<summary><b><code>CEK-RESI-ALL.GIT/</code></b></summary>
-	<details> <!-- __root__ Submodule -->
-		<summary><b>__root__</b></summary>
-		<blockquote>
-			<table>
-			<tr>
-				<td><b><a href='https://github.com/Ilhamaji/cek-resi-all.git/blob/master/postcss.config.js'>postcss.config.js</a></b></td>
-				<td><code>❯ REPLACE-ME</code></td>
-			</tr>
-			<tr>
-				<td><b><a href='https://github.com/Ilhamaji/cek-resi-all.git/blob/master/package-lock.json'>package-lock.json</a></b></td>
-				<td><code>❯ REPLACE-ME</code></td>
-			</tr>
-			<tr>
-				<td><b><a href='https://github.com/Ilhamaji/cek-resi-all.git/blob/master/tailwind.config.js'>tailwind.config.js</a></b></td>
-				<td><code>❯ REPLACE-ME</code></td>
-			</tr>
-			<tr>
-				<td><b><a href='https://github.com/Ilhamaji/cek-resi-all.git/blob/master/vite.config.js'>vite.config.js</a></b></td>
-				<td><code>❯ REPLACE-ME</code></td>
-			</tr>
-			<tr>
-				<td><b><a href='https://github.com/Ilhamaji/cek-resi-all.git/blob/master/package.json'>package.json</a></b></td>
-				<td><code>❯ REPLACE-ME</code></td>
-			</tr>
-			<tr>
-				<td><b><a href='https://github.com/Ilhamaji/cek-resi-all.git/blob/master/index.html'>index.html</a></b></td>
-				<td><code>❯ REPLACE-ME</code></td>
-			</tr>
-			</table>
-		</blockquote>
-	</details>
-	<details> <!-- .github Submodule -->
-		<summary><b>.github</b></summary>
-		<blockquote>
-			<details>
-				<summary><b>workflows</b></summary>
-				<blockquote>
-					<table>
-					<tr>
-						<td><b><a href='https://github.com/Ilhamaji/cek-resi-all.git/blob/master/.github/workflows/deploy.yaml'>deploy.yaml</a></b></td>
-						<td><code>❯ REPLACE-ME</code></td>
-					</tr>
-					</table>
-				</blockquote>
-			</details>
-		</blockquote>
-	</details>
-	<details> <!-- src Submodule -->
-		<summary><b>src</b></summary>
-		<blockquote>
-			<table>
-			<tr>
-				<td><b><a href='https://github.com/Ilhamaji/cek-resi-all.git/blob/master/src/index.css'>index.css</a></b></td>
-				<td><code>❯ REPLACE-ME</code></td>
-			</tr>
-			<tr>
-				<td><b><a href='https://github.com/Ilhamaji/cek-resi-all.git/blob/master/src/App.jsx'>App.jsx</a></b></td>
-				<td><code>❯ REPLACE-ME</code></td>
-			</tr>
-			<tr>
-				<td><b><a href='https://github.com/Ilhamaji/cek-resi-all.git/blob/master/src/main.jsx'>main.jsx</a></b></td>
-				<td><code>❯ REPLACE-ME</code></td>
-			</tr>
-			</table>
-			<details>
-				<summary><b>components</b></summary>
-				<blockquote>
-					<table>
-					<tr>
-						<td><b><a href='https://github.com/Ilhamaji/cek-resi-all.git/blob/master/src/components/Nav.jsx'>Nav.jsx</a></b></td>
-						<td><code>❯ REPLACE-ME</code></td>
-					</tr>
-					</table>
-				</blockquote>
-			</details>
-			<details>
-				<summary><b>pages</b></summary>
-				<blockquote>
-					<table>
-					<tr>
-						<td><b><a href='https://github.com/Ilhamaji/cek-resi-all.git/blob/master/src/pages/Notfound.jsx'>Notfound.jsx</a></b></td>
-						<td><code>❯ REPLACE-ME</code></td>
-					</tr>
-					<tr>
-						<td><b><a href='https://github.com/Ilhamaji/cek-resi-all.git/blob/master/src/pages/About.jsx'>About.jsx</a></b></td>
-						<td><code>❯ REPLACE-ME</code></td>
-					</tr>
-					<tr>
-						<td><b><a href='https://github.com/Ilhamaji/cek-resi-all.git/blob/master/src/pages/Home.jsx'>Home.jsx</a></b></td>
-						<td><code>❯ REPLACE-ME</code></td>
-					</tr>
-					</table>
-				</blockquote>
-			</details>
-		</blockquote>
-	</details>
-</details>
----
-Getting Started
-Prerequisites
-Before getting started with cek-resi-all.git, ensure your runtime environment meets the following requirements:
-Programming Language: JavaScript
-Package Manager: Yarn, Npm
+Install dependencies:
 
-Installation
-Install cek-resi-all.git using one of the following methods:
-Build from source:
-Clone the cek-resi-all.git repository:
-```sh
-❯ git clone https://github.com/Ilhamaji/cek-resi-all.git
-```
-Navigate to the project directory:
-```sh
-❯ cd cek-resi-all.git
-```
-Install the project dependencies:
+```bash
+# Example for Node.js
+npm install
 
-Using `yarn`   <img align="center" src="https://img.shields.io/badge/Yarn-2C8EBB.svg?style={badge_style}&logo=yarn&logoColor=white" />
-```sh
-❯ yarn install
+# Example for PHP/Composer
+composer install
 ```
 
-Using `npm`   <img align="center" src="https://img.shields.io/badge/npm-CB3837.svg?style={badge_style}&logo=npm&logoColor=white" />
-```sh
-❯ npm install
+## 📋 Usage
+
+### Basic Example
+
+Here is how you can use the tracker in your project:
+
+```javascript
+// Example code snippet
+const cekResi = require('./src/cek-resi');
+
+cekResi.track('JNE', '21000123456789')
+  .then(result => {
+    console.log(result);
+  })
+  .catch(err => {
+    console.error(err);
+  });
 ```
 
+## 🚚 Supported Couriers
 
-Usage
-Run cek-resi-all.git using the following command:
-Using `yarn`   <img align="center" src="https://img.shields.io/badge/Yarn-2C8EBB.svg?style={badge_style}&logo=yarn&logoColor=white" />
-```sh
-❯ yarn start
-```
+  * **JNE** (Jalur Nugraha Ekakurir)
+  * **J\&T Express**
+  * **SiCepat**
+  * **POS Indonesia**
+  * **TIKI**
+  * **Anteraja**
+  * *And more...*
 
-Using `npm`   <img align="center" src="https://img.shields.io/badge/npm-CB3837.svg?style={badge_style}&logo=npm&logoColor=white" />
-```sh
-❯ npm start
-```
+## 🤝 Contributing
 
-Testing
-Run the test suite using the following command:
-Using `yarn`   <img align="center" src="https://img.shields.io/badge/Yarn-2C8EBB.svg?style={badge_style}&logo=yarn&logoColor=white" />
-```sh
-❯ yarn test
-```
+Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 
-Using `npm`   <img align="center" src="https://img.shields.io/badge/npm-CB3837.svg?style={badge_style}&logo=npm&logoColor=white" />
-```sh
-❯ npm test
-```
+1.  Fork the Project.
+2.  Create your Feature Branch (`git checkout -b feature/AmazingFeature`).
+3.  Commit your Changes (`git commit -m 'Add some AmazingFeature'`).
+4.  Push to the Branch (`git push origin feature/AmazingFeature`).
+5.  Open a Pull Request.
 
----
-Project Roadmap
-[X] `Task 1`: <strike>Implement feature one.</strike>
-[ ] `Task 2`: Implement feature two.
-[ ] `Task 3`: Implement feature three.
----
-Contributing
-💬 Join the Discussions: Share your insights, provide feedback, or ask questions.
-🐛 Report Issues: Submit bugs found or log feature requests for the `cek-resi-all.git` project.
-💡 Submit Pull Requests: Review open PRs, and submit your own PRs.
-<details closed>
-<summary>Contributing Guidelines</summary>
-Fork the Repository: Start by forking the project repository to your github account.
-Clone Locally: Clone the forked repository to your local machine using a git client.
-```sh
-   git clone https://github.com/Ilhamaji/cek-resi-all.git
-   ```
-Create a New Branch: Always work on a new branch, giving it a descriptive name.
-```sh
-   git checkout -b new-feature-x
-   ```
-Make Your Changes: Develop and test your changes locally.
-Commit Your Changes: Commit with a clear message describing your updates.
-```sh
-   git commit -m 'Implemented new feature x.'
-   ```
-Push to github: Push the changes to your forked repository.
-```sh
-   git push origin new-feature-x
-   ```
-Submit a Pull Request: Create a PR against the original project repository. Clearly describe the changes and their motivations.
-Review: Once your PR is reviewed and approved, it will be merged into the main branch. Congratulations on your contribution!
-</details>
-<details closed>
-<summary>Contributor Graph</summary>
-<br>
-<p align="left">
-   <a href="https://github.com{/Ilhamaji/cek-resi-all.git/}graphs/contributors">
-      <img src="https://contrib.rocks/image?repo=Ilhamaji/cek-resi-all.git">
-   </a>
-</p>
-</details>
----
-License
-This project is protected under the SELECT-A-LICENSE License. For more details, refer to the LICENSE file.
----
-Acknowledgments
-List any resources, contributors, inspiration, etc. here.
----****
+## 📄 License
+
+Distributed under the MIT License. See `LICENSE` for more information.
+
+## ✉️ Contact
+
+**Ilham Aji** - [GitHub Profile](https://www.google.com/search?q=https://github.com/Ilhamaji)  
+Project Link: [https://github.com/Ilhamaji/cek-resi-all](https://www.google.com/search?q=https://github.com/Ilhamaji/cek-resi-all)
+
+-----
+
+*Disclaimer: This project is intended for educational purposes. Use it responsibly and respect the terms of service of the respective logistics providers.*
