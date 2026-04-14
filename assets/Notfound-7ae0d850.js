@@ -1,0 +1,1 @@
+import{j as o}from"./index-a42c7b6d.js";import"./vendor-8d0d4737.js";function a(){return o.jsxs("div",{className:"m-auto",children:[o.jsx("div",{className:"block font-black",children:"404"}),"Notfound"]})}export{a as default};
