@@ -1,56 +1,67 @@
-# <img src="public/logo.svg" alt="Logo" width="36" height="36" align="top" /> Cek Resi All
+-----
 
-A lightweight and efficient multi-courier package tracking library/application built to simplify shipment monitoring for various Indonesian logistics providers.
-Demo : [CekResiAll](https://cekresiall.netlify.app)
+# \<img src="public/logo.svg" alt="Logo" width="36" height="36" align="top" /\> Cek Resi All
+
+A lightweight and efficient multi-courier package tracking application built to simplify shipment monitoring for various Indonesian logistics providers.
+
+**Demo:** [https://cekresiall.netlify.app](https://cekresiall.netlify.app)
 
 ## 🚀 Features
 
-  * **Multi-Courier Support**: Track packages from various popular couriers in Indonesia (JNE, J\&T, Sicepat, POS, TIKI, etc.).
-  * **Real-time Tracking**: Fetch the latest status updates directly from logistics providers.
-  * **Simple Integration**: Clean API/structure making it easy to integrate into larger web or mobile applications.
-  * **Lightweight**: Minimal dependencies for faster execution and easier deployment.
+  * **Multi-Courier Support**: Track packages from JNE, J\&T, Sicepat, POS, TIKI, Anteraja, and more.
+  * **Real-time Tracking**: Powered by [Binderbyte API](https://binderbyte.com/) for accurate logistics data.
+  * **Clean UI**: Responsive design for both desktop and mobile.
+  * **Lightweight**: Built with minimal dependencies for fast performance.
 
 ## 🛠️ Built With
 
-  * **Backend/Engine**: Node.js
-  * **Data Source**: Scraping or Unofficial API integration.
+  * **Frontend**: Vite + React / Vue (or your specific framework)
+  * **Styling**: Tailwind CSS
+  * **Data Source**: [Binderbyte API](https://api.binderbyte.com/)
+
+## 📂 Project Structure
+
+```text
+cek-resi-all/
+├── public/             # Static assets (logos, icons)
+├── src/
+│   ├── components/     # UI Components
+│   ├── api/            # API integration logic
+│   ├── utils/          # Helper functions
+│   └── App.js          # Main entry point
+├── .env.example        # Example environment variables
+├── package.json        # Project dependencies
+└── README.md           # Documentation
+```
 
 ## 📦 Installation
 
-Clone the repository to your local machine:
+1.  **Clone the repository**
 
-```bash
-git clone https://github.com/Ilhamaji/cek-resi-all.git
-cd cek-resi-all
-```
+    ```bash
+    git clone https://github.com/Ilhamaji/cek-resi-all.git
+    cd cek-resi-all
+    ```
 
-Install dependencies:
+2.  **Install dependencies**
 
-```bash
-# Example for Node.js
-npm install
+    ```bash
+    npm install
+    ```
 
-# Example for PHP/Composer
-composer install
-```
+3.  **Environment Setup**
+    Create a `.env` file in the root directory and add your Binderbyte API key:
+
+    ```env
+    VITE_API_KEY=your_binderbyte_key_here
+    ```
 
 ## 📋 Usage
 
-### Basic Example
+To run the project in development mode:
 
-Here is how you can use the tracker in your project:
-
-```javascript
-// Example code snippet
-const cekResi = require('./src/cek-resi');
-
-cekResi.track('JNE', '21000123456789')
-  .then(result => {
-    console.log(result);
-  })
-  .catch(err => {
-    console.error(err);
-  });
+```bash
+npm run dev
 ```
 
 ## 🚚 Supported Couriers
@@ -61,11 +72,11 @@ cekResi.track('JNE', '21000123456789')
   * **POS Indonesia**
   * **TIKI**
   * **Anteraja**
-  * *And more...*
+  * *And 50+ other couriers supported via Binderbyte*
 
 ## 🤝 Contributing
 
-Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+Contributions make the open-source community an amazing place to learn and create.
 
 1.  Fork the Project.
 2.  Create your Feature Branch (`git checkout -b feature/AmazingFeature`).
@@ -75,13 +86,13 @@ Contributions are what make the open-source community such an amazing place to l
 
 ## 📄 License
 
-Distributed under the MIT License. See `LICENSE` for more information.
+Distributed under the **MIT License**. This allows others to use, copy, and modify the code freely. See the `LICENSE` file for more information.
 
 ## ✉️ Contact
 
-**Ilham Aji** - [GitHub Profile](https://www.google.com/search?q=https://github.com/Ilhamaji)  
-Project Link: [https://github.com/Ilhamaji/cek-resi-all](https://www.google.com/search?q=https://github.com/Ilhamaji/cek-resi-all)
+**Ilham Aji** GitHub: [https://github.com/Ilhamaji](https://www.google.com/search?q=https://github.com/Ilhamaji)  
+Project Link: [https://github.com/Ilhamaji/cek-resi-all](https://github.com/Ilhamaji/cek-resi-all)
 
 -----
 
-*Disclaimer: This project is intended for educational purposes. Use it responsibly and respect the terms of service of the respective logistics providers.*
+*Disclaimer: This project is intended for educational purposes. Please use the Binderbyte API according to their Fair Usage Policy.*
