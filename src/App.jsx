@@ -1,8 +1,10 @@
+import { lazy, Suspense } from "react";
 import Nav from "./components/Nav";
-import Home from "./pages/Home";
-import About from "./pages/About";
-import Notfound from "./pages/Notfound";
 import { Routes, Route } from "react-router-dom";
+
+const Home = lazy(() => import("./pages/Home"));
+const About = lazy(() => import("./pages/About"));
+const Notfound = lazy(() => import("./pages/Notfound"));
 
 function App() {
   return (
@@ -15,11 +17,17 @@ function App() {
       <div className="relative z-10 w-full max-w-4xl mx-auto px-6 lg:px-8 flex-grow flex flex-col">
         <Nav />
         <main className="flex-grow flex flex-col pt-8 pb-16">
-          <Routes>
-            <Route path="*" element={<Notfound />} />
-            <Route path="/" element={<Home />} />
-            <Route path="about" element={<About />} />
-          </Routes>
+          <Suspense fallback={
+            <div className="flex-grow flex items-center justify-center">
+              <div className="animate-spin h-8 w-8 text-indigo-500 border-4 border-indigo-200 border-t-indigo-600 rounded-full"></div>
+            </div>
+          }>
+            <Routes>
+              <Route path="*" element={<Notfound />} />
+              <Route path="/" element={<Home />} />
+              <Route path="about" element={<About />} />
+            </Routes>
+          </Suspense>
         </main>
       </div>
 

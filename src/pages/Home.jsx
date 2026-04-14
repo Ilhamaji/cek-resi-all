@@ -220,6 +220,39 @@ export default function Home() {
     setCheckingCourier(null);
   };
 
+  const timelineHistoryUI = React.useMemo(() => {
+    if (!trackingData || !trackingData.history) return null;
+    return trackingData.history.map((history, index) => {
+      const isLatest = index === 0;
+      return (
+        <div key={index} className="flex gap-4 relative z-10">
+          <div className="flex flex-col items-center mt-1 w-10 shrink-0">
+            <div
+              className={`w-4 h-4 rounded-full border-2 shadow-sm flex items-center justify-center ring-4 ring-white
+                   ${
+                     isLatest
+                       ? trackingData.summary?.status === "DELIVERED"
+                         ? "bg-emerald-500 border-emerald-600"
+                         : "bg-indigo-500 border-indigo-600 ring-indigo-50"
+                       : "bg-white border-slate-300"
+                   }`}
+            ></div>
+          </div>
+          <div
+            className={`pb-6 border-b border-slate-100 w-full last:border-b-0 last:pb-0 ${isLatest ? "opacity-100" : "opacity-70"}`}
+          >
+            <p className="text-sm font-semibold text-slate-800 mb-1">
+              {history.desc}
+            </p>
+            <p className="text-xs font-medium text-slate-400">
+              {history.date}
+            </p>
+          </div>
+        </div>
+      );
+    });
+  }, [trackingData?.history, trackingData?.summary?.status]);
+
   return (
     <div className="flex-grow flex flex-col items-center justify-start w-full transition-all duration-500 animate-slide-up">
       {/* Title Area */}
@@ -477,36 +510,7 @@ export default function Home() {
                 <div className="absolute left-10 md:left-12 top-10 bottom-10 w-0.5 bg-slate-200"></div>
 
                 <div className="flex flex-col gap-6">
-                  {(trackingData.history || []).map((history, index) => {
-                    const isLatest = index === 0;
-                    return (
-                      <div key={index} className="flex gap-4 relative z-10">
-                        <div className="flex flex-col items-center mt-1 w-10 shrink-0">
-                          <div
-                            className={`w-4 h-4 rounded-full border-2 shadow-sm flex items-center justify-center ring-4 ring-white
-                                 ${
-                                   isLatest
-                                     ? trackingData.summary?.status ===
-                                       "DELIVERED"
-                                       ? "bg-emerald-500 border-emerald-600"
-                                       : "bg-indigo-500 border-indigo-600 ring-indigo-50"
-                                     : "bg-white border-slate-300"
-                                 }`}
-                          ></div>
-                        </div>
-                        <div
-                          className={`pb-6 border-b border-slate-100 w-full last:border-b-0 last:pb-0 ${isLatest ? "opacity-100" : "opacity-70"}`}
-                        >
-                          <p className="text-sm font-semibold text-slate-800 mb-1">
-                            {history.desc}
-                          </p>
-                          <p className="text-xs font-medium text-slate-400">
-                            {history.date}
-                          </p>
-                        </div>
-                      </div>
-                    );
-                  })}
+                  {timelineHistoryUI}
                 </div>
               </div>
             </>
