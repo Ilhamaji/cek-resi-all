@@ -1,7 +1,3 @@
-Since this repository is a multi-courier tracking tool, the README should emphasize its flexibility and ease of use. Here is a professional `README.md` template for **cek-resi-all**.
-
------
-
 # Cek Resi All
 
 A lightweight and efficient multi-courier package tracking library/application built to simplify shipment monitoring for various Indonesian logistics providers.
