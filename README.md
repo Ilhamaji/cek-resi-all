@@ -1,4 +1,4 @@
-# <img src="public/logo.svg" alt="Logo" width="36" height="36" align="top" /> Cek Resi All
+# \<img src="public/logo.svg" alt="Logo" width="36" height="36" align="top" /\> Cek Resi All
 
 A lightweight and efficient multi-courier package tracking application built to simplify shipment monitoring for various Indonesian logistics providers.
 
@@ -13,24 +13,9 @@ A lightweight and efficient multi-courier package tracking application built to 
 
 ## 🛠️ Built With
 
-  * **Frontend**: Vite + React / Vue (or your specific framework)
-  * **Styling**: Tailwind CSS
+  * **Backend/Engine**: Node.js
   * **Data Source**: [Binderbyte API](https://api.binderbyte.com/)
-
-## 📂 Project Structure
-
-```text
-cek-resi-all/
-├── public/             # Static assets (logos, icons)
-├── src/
-│   ├── components/     # UI Components
-│   ├── api/            # API integration logic
-│   ├── utils/          # Helper functions
-│   └── App.js          # Main entry point
-├── .env.example        # Example environment variables
-├── package.json        # Project dependencies
-└── README.md           # Documentation
-```
+  * **Styling**: Tailwind CSS
 
 ## 📦 Installation
 
@@ -70,7 +55,7 @@ npm run dev
   * **POS Indonesia**
   * **TIKI**
   * **Anteraja**
-  * *And 50+ other couriers supported via Binderbyte*
+  * *And many other couriers supported via Binderbyte*
 
 ## 🤝 Contributing
 
@@ -84,11 +69,11 @@ Contributions make the open-source community an amazing place to learn and creat
 
 ## 📄 License
 
-Distributed under the **MIT License**. This allows others to use, copy, and modify the code freely. See the `LICENSE` file for more information.
+Distributed under the **MIT License**. This allows others to use, copy, and modify the code freely while protecting your authorship. See the `LICENSE` file for more information.
 
 ## ✉️ Contact
 
-**Ilham Aji** GitHub: [https://github.com/Ilhamaji](https://www.google.com/search?q=https://github.com/Ilhamaji)  
+**Ilham Aji** - [GitHub Profile](https://www.google.com/search?q=https://github.com/Ilhamaji)  
 Project Link: [https://github.com/Ilhamaji/cek-resi-all](https://github.com/Ilhamaji/cek-resi-all)
 
 -----
