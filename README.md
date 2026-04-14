@@ -12,7 +12,7 @@ Demo : [CekResiAll](https://cekresiall.netlify.app)
 
 ## 🛠️ Built With
 
-  * **Backend/Engine**: [Node.js]
+  * **Backend/Engine**: Node.js
   * **Data Source**: Scraping or Unofficial API integration.
 
 ## 📦 Installation
