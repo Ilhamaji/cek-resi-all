@@ -2,44 +2,46 @@
 
 # Cek Resi All
 
-**Pelacak resi pengiriman** untuk banyak ekspedisi Indonesia dalam satu antarmuka — cukup masukkan nomor resi.
+**A shipment tracker** for Indonesian couriers in a single interface — just enter the tracking number.
 
 [![Status](https://img.shields.io/badge/status-complete-brightgreen?style=flat-square)](#)
 [![React](https://img.shields.io/badge/React-18-61DAFB?style=flat-square&logo=react&logoColor=black)](https://react.dev)
 [![Vite](https://img.shields.io/badge/Vite-5-646CFF?style=flat-square&logo=vite&logoColor=white)](https://vitejs.dev)
 [![Tailwind](https://img.shields.io/badge/Tailwind%20CSS-3-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white)](https://tailwindcss.com)
 
+**English** · [Bahasa Indonesia](README.id.md)
+
 </div>
 
 ---
 
-## Tentang
+## About
 
-Cek status paket tanpa harus membuka situs masing-masing ekspedisi. Masukkan nomor resi, pilih kurir, dan seluruh riwayat perjalanan paket ditampilkan dalam satu timeline.
+Check a parcel's status without opening each courier's own website. Enter the tracking number, pick a courier, and the full journey appears as a single timeline.
 
-Data pelacakan diambil dari **[Binderbyte API](https://binderbyte.com)** yang mendukung puluhan ekspedisi Indonesia (JNE, J&T, SiCepat, POS, AnterAja, Ninja, dan lainnya).
+Tracking data comes from the **[Binderbyte API](https://binderbyte.com)**, which covers dozens of Indonesian couriers (JNE, J&T, SiCepat, POS, AnterAja, Ninja, and more).
 
-## Fitur
+## Features
 
-- Satu form untuk semua kurir yang didukung Binderbyte; nomor resi dikirim bersama nama kurir.
-- Hasil ditampilkan sebagai timeline: riwayat status berurutan dari pengiriman sampai diterima.
-- Ringkasan paket di atas timeline: nomor resi, kurir, status terkini, dan estimasi.
-- Halaman di-*code split* dengan `React.lazy` + `Suspense`, jadi bundle awal tetap kecil.
-- Route yang tidak dikenal jatuh ke halaman 404.
+- One form for every courier Binderbyte supports; the tracking number is sent together with the courier name.
+- Results render as a timeline: status history in order, from dispatch to delivery.
+- A parcel summary above the timeline: tracking number, courier, current status, and estimate.
+- Pages are code-split with `React.lazy` + `Suspense`, keeping the initial bundle small.
+- Unknown routes fall through to a 404 page.
 
 ## Tech Stack
 
-| Bagian | Teknologi |
+| Layer | Technology |
 | --- | --- |
 | Framework | React 18 + Vite |
 | Routing | React Router 6 |
 | Styling | Tailwind CSS |
 | Data | [Binderbyte API](https://api.binderbyte.com/v1/track) |
-| Deploy | Netlify (`_redirects` untuk SPA) |
+| Deployment | Netlify (`_redirects` for the SPA) |
 
-## Menjalankan
+## Getting Started
 
-### 1. Clone & install
+### 1. Clone and install
 
 ```bash
 git clone https://github.com/Ilhamaji/cek-resi-all.git
@@ -49,13 +51,13 @@ npm install
 
 ### 2. API key
 
-Daftar di [binderbyte.com](https://binderbyte.com) untuk mendapatkan API key, lalu buat `.env`:
+Register at [binderbyte.com](https://binderbyte.com) to get a key, then create `.env`:
 
 ```env
 VITE_API_KEY=your_binderbyte_key
 ```
 
-### 3. Jalankan
+### 3. Run
 
 ```bash
 npm run dev
@@ -67,34 +69,34 @@ npm run dev
 npm run build
 ```
 
-## Struktur
+## Project Layout
 
 ```
 src/
-  App.jsx                 # routing + layout + dekorasi latar
-  components/Nav.jsx      # navigasi
+  App.jsx                 # routing, layout, background decoration
+  components/Nav.jsx      # navigation
   pages/
-    Home.jsx              # form input resi & hasil pelacakan
-    About.jsx             # info aplikasi
-    Notfound.jsx          # halaman 404
-public/_redirects         # aturan rewrite SPA untuk Netlify
+    Home.jsx              # tracking form and results
+    About.jsx             # app info
+    Notfound.jsx          # 404 page
+public/_redirects         # SPA rewrite rules for Netlify
 .github/workflows/deploy.yaml
 ```
 
 ## Endpoint
 
 ```http
-GET https://api.binderbyte.com/v1/track?api_key={KEY}&courier={kurir}&awb={nomor_resi}
+GET https://api.binderbyte.com/v1/track?api_key={KEY}&courier={courier}&awb={tracking_number}
 ```
 
-> **Catatan:** API key dipanggil langsung dari browser (`VITE_` prefix), sehingga terekspos di bundle. Untuk penggunaan publik, pindahkan pemanggilan ke backend/proxy agar key tidak bisa disalahgunakan.
+> **Note:** the API key is called straight from the browser (the `VITE_` prefix), so it is visible in the bundle. For public use, move the call behind a backend or proxy so the key cannot be abused.
 
-## Lisensi
+## License
 
 MIT.
 
 ---
 
 <div align="center">
-Dibuat oleh <a href="https://github.com/Ilhamaji">Ilham Aji</a>
+Built by <a href="https://github.com/Ilhamaji">Ilham Aji</a>
 </div>
