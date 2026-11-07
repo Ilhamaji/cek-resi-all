@@ -1,81 +1,100 @@
-# <img src="public/logo.svg" alt="Logo" width="36" height="36" align="top" /> Cek Resi All
+<div align="center">
 
-A lightweight and efficient multi-courier package tracking application built to simplify shipment monitoring for various Indonesian logistics providers.
+# Cek Resi All
 
-**Demo:** [https://cekresiall.netlify.app](https://cekresiall.netlify.app)
+**Pelacak resi pengiriman** untuk banyak ekspedisi Indonesia dalam satu antarmuka — cukup masukkan nomor resi.
 
-## 🚀 Features
+[![Status](https://img.shields.io/badge/status-complete-brightgreen?style=flat-square)](#)
+[![React](https://img.shields.io/badge/React-18-61DAFB?style=flat-square&logo=react&logoColor=black)](https://react.dev)
+[![Vite](https://img.shields.io/badge/Vite-5-646CFF?style=flat-square&logo=vite&logoColor=white)](https://vitejs.dev)
+[![Tailwind](https://img.shields.io/badge/Tailwind%20CSS-3-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white)](https://tailwindcss.com)
 
-  * **Multi-Courier Support**: Track packages from JNE, J\&T, Sicepat, POS, TIKI, Anteraja, and more.
-  * **Real-time Tracking**: Powered by [Binderbyte API](https://binderbyte.com/) for accurate logistics data.
-  * **Clean UI**: Responsive design for both desktop and mobile.
-  * **Lightweight**: Built with minimal dependencies for fast performance.
+</div>
 
-## 🛠️ Built With
+---
 
-  * **Backend/Engine**: Node.js
-  * **Data Source**: [Binderbyte API](https://api.binderbyte.com/)
-  * **Styling**: Tailwind CSS
+## Tentang
 
-## 📦 Installation
+Cek status paket tanpa harus membuka situs masing-masing ekspedisi. Masukkan nomor resi, pilih kurir, dan seluruh riwayat perjalanan paket ditampilkan dalam satu timeline.
 
-1.  **Clone the repository**
+Data pelacakan diambil dari **[Binderbyte API](https://binderbyte.com)** yang mendukung puluhan ekspedisi Indonesia (JNE, J&T, SiCepat, POS, AnterAja, Ninja, dan lainnya).
 
-    ```bash
-    git clone https://github.com/Ilhamaji/cek-resi-all.git
-    cd cek-resi-all
-    ```
+## Fitur
 
-2.  **Install dependencies**
+- Satu form untuk semua kurir yang didukung Binderbyte; nomor resi dikirim bersama nama kurir.
+- Hasil ditampilkan sebagai timeline: riwayat status berurutan dari pengiriman sampai diterima.
+- Ringkasan paket di atas timeline: nomor resi, kurir, status terkini, dan estimasi.
+- Halaman di-*code split* dengan `React.lazy` + `Suspense`, jadi bundle awal tetap kecil.
+- Route yang tidak dikenal jatuh ke halaman 404.
 
-    ```bash
-    npm install
-    ```
+## Tech Stack
 
-3.  **Environment Setup**
-    Create a `.env` file in the root directory and add your Binderbyte API key:
+| Bagian | Teknologi |
+| --- | --- |
+| Framework | React 18 + Vite |
+| Routing | React Router 6 |
+| Styling | Tailwind CSS |
+| Data | [Binderbyte API](https://api.binderbyte.com/v1/track) |
+| Deploy | Netlify (`_redirects` untuk SPA) |
 
-    ```env
-    VITE_API_KEY=your_binderbyte_key_here
-    ```
+## Menjalankan
 
-## 📋 Usage
+### 1. Clone & install
 
-To run the project in development mode:
+```bash
+git clone https://github.com/Ilhamaji/cek-resi-all.git
+cd cek-resi-all
+npm install
+```
+
+### 2. API key
+
+Daftar di [binderbyte.com](https://binderbyte.com) untuk mendapatkan API key, lalu buat `.env`:
+
+```env
+VITE_API_KEY=your_binderbyte_key
+```
+
+### 3. Jalankan
 
 ```bash
 npm run dev
 ```
 
-## 🚚 Supported Couriers
+### 4. Build
 
-  * **JNE** (Jalur Nugraha Ekakurir)
-  * **J\&T Express**
-  * **SiCepat**
-  * **POS Indonesia**
-  * **TIKI**
-  * **Anteraja**
-  * *And many other couriers supported via Binderbyte*
+```bash
+npm run build
+```
 
-## 🤝 Contributing
+## Struktur
 
-Contributions make the open-source community an amazing place to learn and create.
+```
+src/
+  App.jsx                 # routing + layout + dekorasi latar
+  components/Nav.jsx      # navigasi
+  pages/
+    Home.jsx              # form input resi & hasil pelacakan
+    About.jsx             # info aplikasi
+    Notfound.jsx          # halaman 404
+public/_redirects         # aturan rewrite SPA untuk Netlify
+.github/workflows/deploy.yaml
+```
 
-1.  Fork the Project.
-2.  Create your Feature Branch (`git checkout -b feature/AmazingFeature`).
-3.  Commit your Changes (`git commit -m 'Add some AmazingFeature'`).
-4.  Push to the Branch (`git push origin feature/AmazingFeature`).
-5.  Open a Pull Request.
+## Endpoint
 
-## 📄 License
+```http
+GET https://api.binderbyte.com/v1/track?api_key={KEY}&courier={kurir}&awb={nomor_resi}
+```
 
-Distributed under the **MIT License**. This allows others to use, copy, and modify the code freely while protecting your authorship. See the `LICENSE` file for more information.
+> **Catatan:** API key dipanggil langsung dari browser (`VITE_` prefix), sehingga terekspos di bundle. Untuk penggunaan publik, pindahkan pemanggilan ke backend/proxy agar key tidak bisa disalahgunakan.
 
-## ✉️ Contact
+## Lisensi
 
-**Ilham Aji** - [GitHub Profile](https://www.google.com/search?q=https://github.com/Ilhamaji)  
-Project Link: [https://github.com/Ilhamaji/cek-resi-all](https://github.com/Ilhamaji/cek-resi-all)
+MIT.
 
------
+---
 
-*Disclaimer: This project is intended for educational purposes. Please use the Binderbyte API according to their Fair Usage Policy.*
+<div align="center">
+Dibuat oleh <a href="https://github.com/Ilhamaji">Ilham Aji</a>
+</div>
